@@ -1,0 +1,52 @@
+//language used: JAVA
+//Permutations in a String
+
+//Code:
+public boolean checkInclusion(String s1, String s2) {
+
+        int l=s2.length();
+        int len=s1.length();
+        if(l<len)
+            return false;
+        int l1=l-len+1;
+        String arr[]=new String[l1];
+        for(int i=0;i<l1;i++)
+        {
+          arr[i]=s2.substring(i,i+len);  
+        }
+        int freq[]=new int[26];
+        for(int i=0;i<len;i++)
+        {
+            char c=s1.charAt(i);
+            int asc=c;
+            freq[asc-97]++;
+        }
+        
+        for(int i=0;i<l1;i++)
+        {
+            int b=isanagram(arr[i],freq);
+            if(b==1)
+                return true;
+        }
+        return false;
+    }
+    static int isanagram(String str, int[] a)
+    {
+        int freq1[]= new int[26];
+        for(int i=0;i<str.length();i++)
+        {
+            char c=str.charAt(i);
+            int asc=c;
+            freq1[asc-97]++;
+        }
+        int flag=1;
+        for(int i=0;i<26;i++)
+        {
+            if(a[i]==freq1[i])
+                continue;
+            else
+                flag=0;
+        }
+        return flag;
+    }
+} 
