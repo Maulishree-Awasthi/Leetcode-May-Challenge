@@ -1,0 +1,23 @@
+//Language used: JAVA
+//Jewels and Stones
+
+
+Code:
+public int numJewelsInStones(String J, String S) {
+        int count =0;
+        int l=J.length();
+        int le=S.length();
+        for(int i=0;i<l;i++)
+        {
+            char ch=J.charAt(i);
+            for(int j=0;j<le;j++)
+            {
+                char c=S.charAt(j);
+                if(c==ch)
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
