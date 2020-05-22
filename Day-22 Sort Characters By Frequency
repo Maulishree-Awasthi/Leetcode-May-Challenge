@@ -1,0 +1,45 @@
+//Language used: JAVA
+//Sort Characters By Frequency
+
+
+Code:
+class Solution {
+    public String frequencySort(String s) {
+        int l=s.length();
+        int arr[]=new int[256];
+        for(int i=0;i<l;i++)
+        {
+            char ch=s.charAt(i);
+            int asc=ch;
+            arr[asc]++;
+        }
+       int max=0;
+        int index=0;
+        int m=0;
+        char res[]=new char[l];
+       for(int i=0;i<256;i++)
+       {
+           for(int j=0;j<256;j++)
+           {
+               if(arr[j]>max)
+               {
+                   max=arr[j];
+                   index=j;
+               }
+           }
+           char c=(char)index;
+           for(int k=0;k<max;k++)
+           {
+               res[m]=c;
+               m++;
+               
+           }
+           arr[index]=0;
+           max=0;
+           if(m==l)
+               break;
+       }
+        String str =String.valueOf(res);
+        return str;
+    }
+}
