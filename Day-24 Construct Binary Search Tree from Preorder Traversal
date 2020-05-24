@@ -1,0 +1,56 @@
+//Language used: JAVA
+//Construct Binary Search Tree from Preorder Traversal
+
+
+Code:
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode bstFromPreorder(int[] preorder) {
+        int l=preorder.length;
+        TreeNode root = new TreeNode(preorder[0]);
+     
+        for(int i=1;i<l;i++)
+        {
+            TreeNode te=root;
+            TreeNode temp=new TreeNode(preorder[i]);
+                while(te.left!=null || te.right!=null)
+                {
+                    if(preorder[i]<te.val)
+                    {
+                        if(te.left==null)
+                            break;
+                        te=te.left;
+                        
+                    }
+                    else
+                    {
+                        if(te.right==null)
+                            break;
+                        te=te.right;
+                        
+                    }
+                }
+                if(preorder[i]<te.val)
+                {
+                    te.left=temp;
+                }
+            else
+                te.right=temp;
+            }
+        return root;
+    }
+}
