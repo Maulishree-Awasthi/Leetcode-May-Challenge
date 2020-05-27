@@ -1,0 +1,28 @@
+//language used: JAVA
+//Contiguous Array
+
+
+Code:
+class Solution {
+    public int findMaxLength(int[] arr)
+    {
+        int n=arr.length;
+        int indices[]=new int[n];
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]==1)
+                count++;
+            else
+                count--;
+            indices[i]=count;
+        }
+        int last=-1;
+        for(int i=0;i<n;i++)
+        {
+            if(indices[i]==0)
+                last=i;
+        }
+        
+} 
+  
