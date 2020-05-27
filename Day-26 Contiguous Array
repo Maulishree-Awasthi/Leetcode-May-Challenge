@@ -3,26 +3,21 @@
 
 
 Code:
-class Solution {
-    public int findMaxLength(int[] arr)
-    {
-        int n=arr.length;
-        int indices[]=new int[n];
-        int count=0;
-        for(int i=0;i<n;i++)
-        {
-            if(arr[i]==1)
-                count++;
-            else
-                count--;
-            indices[i]=count;
+public class Solution {
+
+    public int findMaxLength(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+        int maxlen = 0, count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            count = count + (nums[i] == 1 ? 1 : -1);
+            if (map.containsKey(count)) {
+                maxlen = Math.max(maxlen, i - map.get(count));
+            } else {
+                map.put(count, i);
+            }
         }
-        int last=-1;
-        for(int i=0;i<n;i++)
-        {
-            if(indices[i]==0)
-                last=i;
-        }
-        
-} 
-  
+        return maxlen;
+    }
+}
+
