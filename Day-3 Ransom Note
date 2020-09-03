@@ -1,0 +1,51 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        if(ransomNote.isEmpty())
+        {
+            return true;
+        }
+        else
+        {
+            int len=magazine.length();
+            int freq[]=new int[26];
+            char cha='a';
+            for(int i=0;i<26;i++)
+            {
+                int count=0;
+                for(int j=0;j<len;j++)
+                {
+                    if(cha==(magazine.charAt(j)))
+                    {
+                        count++;
+                    }
+                }
+                freq[i]=count;
+                cha++;
+            }
+            int l=ransomNote.length();
+            int freq1[]=new int[26];
+            cha='a';
+            for(int i=0;i<26;i++)
+            {
+                int count1=0;
+                for(int j=0;j<l;j++)
+                {
+                    if(cha==(ransomNote.charAt(j)))
+                    {
+                        count1++;
+                    }
+                }
+                freq1[i]=count1;
+                cha++;
+            }
+            for(int i=0;i<26;i++)
+            {
+                if(freq1[i]>freq[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+}
