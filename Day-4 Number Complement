@@ -1,0 +1,33 @@
+class Solution {
+    public int findComplement(int num) {
+        int arr[]=new int[256];
+        int i=0;
+        while(num!=0)
+        {
+            int d=num%2;
+            arr[i]=d;
+            i=i+1;
+            num=num/2;
+        }
+        for(int j=0;j<i;j++)
+        {
+            if(arr[j]==1)
+                arr[j]=0;
+            else
+                arr[j]=1;
+            
+        }
+        int sum=0;
+        for(int j=0;j<i;j++)
+        {
+            if(arr[j]==1)
+            {
+                double r=Math.pow(2,j);
+                int value=(int) r;
+                sum=sum+(arr[j]*value);
+            }
+        }
+        return sum;
+        
+    }
+}
