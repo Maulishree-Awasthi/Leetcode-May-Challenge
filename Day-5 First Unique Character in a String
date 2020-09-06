@@ -1,0 +1,25 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        int freq[]=new int[26];
+        int len=s.length();
+        char ch='a';
+        for(int i=0;i<len;i++)
+        {
+            int asc=s.charAt(i);;
+            int index=asc-97;
+            freq[index]++;
+        }
+        int flag=-1;
+        for(int i=0;i<len;i++)
+        {
+            int asc=s.charAt(i);
+            int index=asc-97;
+            if(freq[index]==1)
+            {
+                flag=i;
+                break;
+            }
+        }
+        return flag;
+    }
+}
